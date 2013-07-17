@@ -12,6 +12,8 @@ def CreateElementPack():
     print element_package.Elements()
     element_package.New()
     print element_package.Elements()
+    
+    print "this is some junk material."
 
 
 
