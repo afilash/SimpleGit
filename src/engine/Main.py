@@ -3,17 +3,11 @@ Created on 14-Jul-2013
 
 @author: AppleCart
 '''
-#import sys
-from engine.treebuilder.epack import ElementPackage 
-
+from treebuilder.Impleme_package import package
 
 def CreateElementPack():
-    element_package = ElementPackage()
-    print element_package.Elements()
-    element_package.New()
-    print element_package.Elements()
-    
-    print "this is some junk material."
+    print [  package.new() for dummy_i in range(4)]
+    print len(package)
 
 
 

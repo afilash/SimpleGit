@@ -3,38 +3,34 @@ Created on 14-Jul-2013
 @author: AppleCart
 '''
 
-from engine.treebuilder.elm import Element
+from . import Impleme_element
 
-class ElementPackage():
+
+class Package(object):
     
     _Elements = None
     _count = 0
     
     def __init__(self ):
         self._Elements = []
+        
+    def __repr__(self):
+        return "<Object Package>"
     
-    def Elements(self):
-        return self._Elements
+    def __len__(self):
+        return len(self._Elements)
     
-    def New(self):
+    def new(self):
         cur = self._count
-        new = Element(elementid = cur)
+        new = Impleme_element.Element(elementid = cur)
         self._count += 1
         self._Elements.append(new)
-        return self._Elements[len(self._Elements) -1]
+        return self._Elements[len(self._Elements) -1].elementname()
     
-    def Delete(self , ID ):
-        
-#        idsearch = [ members.elementid() for members in self._Elements]
-#        if ID not in idsearch  :
-#            return "No such element"
-
-        try:
-            int(ID)
-        except:
+    def delete(self , ID ):
+        if not isinstance(ID, int):
             return "Type Error"
         
-        print [(indx , members.elementid()) for indx,  members in enumerate(self._Elements)]
         idsearch = [indx  for indx,  members in enumerate(self._Elements) if members.elementid() == int(ID)]
         if not idsearch :
             return "No such element"
@@ -42,4 +38,6 @@ class ElementPackage():
 
         print [(indx , members.elementid()) for indx,  members in enumerate(self._Elements)]
         return "Deleted member " + str(ID)
-        
+
+
+package = Package()
