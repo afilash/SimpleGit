@@ -4,7 +4,7 @@ Created on 14-Jul-2013
 '''
 
 from . import Impleme_element
-
+from . import utilities
 
 class Package(object):
     
@@ -22,7 +22,7 @@ class Package(object):
     
     def new(self):
         elementid = self._count
-        elementname = "idname_"+ str(elementid)        
+        elementname = "idname_"+ utilities.genhash(elementid, leng = 8)
         enabled=True
         actionlist=[]        
         new = Impleme_element.Element(elementid , elementname, enabled, actionlist )
