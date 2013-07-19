@@ -21,23 +21,38 @@ class Package(object):
         return len(self._Elements)
     
     def new(self):
-        cur = self._count
-        new = Impleme_element.Element(elementid = cur)
+        elementid = self._count
+        elementname = "idname_"+ str(elementid)        
+        enabled=True
+        actionlist=[]        
+        new = Impleme_element.Element(elementid , elementname, enabled, actionlist )
         self._count += 1
-        self._Elements.append(new)
+        self._Elements.append( new )
         return self._Elements[len(self._Elements) -1].elementname()
     
-    def delete(self , ID ):
-        if not isinstance(ID, int):
+    def delete(self , elementId ):
+        if not isinstance(elementId, int):
             return "Type Error"
         
-        idsearch = [indx  for indx,  members in enumerate(self._Elements) if members.elementid() == int(ID)]
+        idsearch = [indx  for indx,  members in enumerate(self._Elements) if members.elementid() == int(elementId)]
         if not idsearch :
             return "No such element"
         del self._Elements[idsearch[0]]
 
         print [(indx , members.elementid()) for indx,  members in enumerate(self._Elements)]
-        return "Deleted member " + str(ID)
-
+        return "Deleted member " + str(elementId)
+    
+    #===========================================================================
+    # Return Item using elementId
+    #===========================================================================
+    def item(self, elementId):
+        try:
+            idsearch = [ indx  for indx,  members in enumerate(self._Elements) if members.elementid() == int(elementId)]
+            if not idsearch :
+                return  None
+            else:
+                return self._Elements[idsearch[0]]
+        except:
+            return  None
 
 package = Package()
