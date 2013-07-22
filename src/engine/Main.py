@@ -10,6 +10,7 @@ def CreateElementPack():
     print len( package )
     print package.delete(elementId=3)
     print package.delete(elementId=1)
+    print "checking for preservation added on cba9582437515e1b8e2fec8b25f9b3248a55d837"
     
 
 
